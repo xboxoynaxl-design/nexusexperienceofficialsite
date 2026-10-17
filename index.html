@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Experience - AnUndefinedDeveloper</title>
+    <!-- Tailwind CSS for utility styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-color: #121318;
+            --surface-color: #1e1f25;
+            --primary-color: #a8c7fa;
+            --primary-container: #004a77;
+            --on-primary: #003258;
+            --text-color: #e2e2e6;
+            --text-secondary: #c4c6d0;
+            --card-bg: #282a31;
+            --card-border: #33353e;
+            --border-radius: 24px;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        /* Material You Custom Active Styles */
+        .nav-btn {
+            background-color: transparent;
+            color: var(--text-secondary);
+            transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .nav-btn:hover {
+            background-color: #2a2c34;
+            color: var(--text-color);
+        }
+
+        .nav-btn.active {
+            background-color: var(--primary-container) !important;
+            color: var(--primary-color) !important;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Card animations */
+        .section-card {
+            background-color: var(--surface-color);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .info-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+        }
+
+        .custom-link {
+            color: var(--primary-color);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            word-break: break-all;
+            transition: color 0.2s ease;
+        }
+
+        .custom-link:hover {
+            color: #d3e3fd;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col md:flex-row antialiased">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-full md:w-72 bg-[#1e1f25] p-6 flex flex-col gap-3 border-b md:border-b-0 md:border-r border-[#2d2f37] shrink-0">
+        <div class="mb-4 pb-4 border-b border-[#2d2f37]">
+            <h2 class="text-xl font-bold text-[#a8c7fa]">Nexus Experience</h2>
+            <p class="text-xs text-[#c4c6d0] mt-1">by AnUndefinedDeveloper</p>
+        </div>
+
+        <nav class="flex flex-col gap-2">
+            <!-- Navigation Buttons -->
+            <button id="btn-news" class="nav-btn w-full text-left px-5 py-3.5 rounded-full flex items-center gap-3 text-base font-medium">
+                <span>📢</span>
+                <span>News</span>
+            </button>
+            
+            <button id="btn-team" class="nav-btn w-full text-left px-5 py-3.5 rounded-full flex items-center gap-3 text-base font-medium">
+                <span>👥</span>
+                <span>Team</span>
+            </button>
+
+            <button id="btn-downloads" class="nav-btn w-full text-left px-5 py-3.5 rounded-full flex items-center gap-3 text-base font-medium">
+                <span>📥</span>
+                <span>Downloads</span>
+            </button>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 p-6 md:p-10 overflow-y-auto max-w-5xl">
+        
+        <!-- Default State Message -->
+        <div id="placeholder-msg" class="section-card p-8 text-center text-[#c4c6d0] my-auto">
+            <p class="text-lg">Bir bölüm açmak için sol taraftaki butonlara tıklayın.</p>
+            <p class="text-xs mt-2 opacity-70">Açık olan bölüme tekrar tıklayarak sayfayı kapatabilirsiniz.</p>
+        </div>
+
+        <!-- News Section -->
+        <div id="sec-news" class="section-card p-6 md:p-8 hidden">
+            <h1 class="text-2xl font-bold text-[#a8c7fa] mb-6 flex items-center gap-2">
+                <span>📢</span> News
+            </h1>
+            
+            <div class="space-y-4">
+                <div class="info-card p-5">
+                    <p class="text-base text-[#e2e2e6] font-medium">SM-T110 is getting stable releases soon!</p>
+                </div>
+
+                <div class="info-card p-5">
+                    <p class="text-base text-[#e2e2e6]">
+                        New devices are coming soon! Visit: 
+                        <a href="https://xdaforums.com/t/whos-next-nexus-experience.4800835/" target="_blank" rel="noopener noreferrer" class="custom-link font-medium">
+                            https://xdaforums.com/t/whos-next-nexus-experience.4800835/
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div id="sec-team" class="section-card p-6 md:p-8 hidden">
+            <h1 class="text-2xl font-bold text-[#a8c7fa] mb-6 flex items-center gap-2">
+                <span>👥</span> Team
+            </h1>
+
+            <div class="info-card p-5">
+                <p class="text-lg font-semibold text-[#e2e2e6] mb-4">Nexus Experience Developer Team</p>
+                <div class="w-full flex justify-center items-center overflow-hidden rounded-xl border border-[#33353e]">
+                    <img 
+                        src="team.png" 
+                        alt="Nexus Experience Team" 
+                        class="w-full max-w-2xl h-auto object-cover rounded-xl"
+                        onerror="this.onerror=null; this.src='https://placehold.co/600x300/1e1f25/a8c7fa?text=Nexus+Experience+Team';"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- Downloads Section -->
+        <div id="sec-downloads" class="section-card p-6 md:p-8 hidden">
+            <h1 class="text-2xl font-bold text-[#a8c7fa] mb-6 flex items-center gap-2">
+                <span>📥</span> Downloads
+            </h1>
+
+            <div class="info-card p-5">
+                <p class="text-base text-[#e2e2e6] leading-relaxed">
+                    Visit: 
+                    <a href="https://github.com/xboxoynaxl-design" target="_blank" rel="noopener noreferrer" class="custom-link font-medium">
+                        https://github.com/xboxoynaxl-design
+                    </a> 
+                    and select <span class="bg-[#004a77] text-[#a8c7fa] px-2 py-0.5 rounded font-mono text-sm">OTA Archive</span> for <i>sm-t110-t111</i>, select <span class="bg-[#004a77] text-[#a8c7fa] px-2 py-0.5 rounded font-mono text-sm">Non-OTA Archive</span> for any other device!
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Navigation Interactive Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Map of section IDs and button IDs
+            const sections = {
+                'news': { btn: document.getElementById('btn-news'), sec: document.getElementById('sec-news') },
+                'team': { btn: document.getElementById('btn-team'), sec: document.getElementById('sec-team') },
+                'downloads': { btn: document.getElementById('btn-downloads'), sec: document.getElementById('sec-downloads') }
+            };
+
+            const placeholderMsg = document.getElementById('placeholder-msg');
+
+            // Function to toggle a section
+            function toggleSection(targetKey) {
+                const target = sections[targetKey];
+                const isAlreadyActive = target.btn.classList.contains('active');
+
+                // 1. Reset all sections and buttons
+                Object.keys(sections).forEach(key => {
+                    sections[key].btn.classList.remove('active');
+                    sections[key].sec.classList.add('hidden');
+                });
+
+                // 2. If it was NOT active before, activate it now
+                if (!isAlreadyActive) {
+                    target.btn.classList.add('active');
+                    target.sec.classList.remove('hidden');
+                    if (placeholderMsg) placeholderMsg.classList.add('hidden');
+                } else {
+                    // If it WAS active, leave everything hidden and display placeholder
+                    if (placeholderMsg) placeholderMsg.classList.remove('hidden');
+                }
+            }
+
+            // Attach event listeners for all buttons
+            Object.keys(sections).forEach(key => {
+                if (sections[key].btn) {
+                    sections[key].btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        toggleSection(key);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
